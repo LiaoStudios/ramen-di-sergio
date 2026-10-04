@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Il Ramen di Sergio — Ramen giapponese a Brescia Centro</title>
+<meta name="description" content="Il Ramen di Sergio: autentico ramen giapponese in Via Mazzini 36, Brescia Centro. Brodo di maiale e pollo cotto oltre 10 ore, gyoza, donburi e dolci giapponesi. Anche asporto.">
+<meta name="theme-color" content="#fbf7f1">
+
+<!-- Open Graph -->
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="Il Ramen di Sergio — Autentico ramen giapponese">
+<meta property="og:description" content="Brodi a lunga cottura, noodles e topping generosi. Via Mazzini 36, Brescia Centro.">
+<meta property="og:image" content="assets/images/hero-bg-mobile.jpg">
+<meta property="og:locale" content="it_IT">
+
+<link rel="icon" href="assets/images/logo-sergio.jpg">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shojumaru&display=swap">
+<script>document.documentElement.classList.add("js");</script>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Il Ramen di Sergio",
+  "description": "Autentico ramen giapponese nel centro di Brescia.",
+  "image": "assets/images/hero-bg-mobile.jpg",
+  "telephone": "+39 030 917 3342",
+  "priceRange": "€€",
+  "servesCuisine": ["Giapponese", "Ramen"],
+  "hasMenu": "https://go.nordqr.com/ilramendisergio/",
+  "acceptsReservations": "True",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Giuseppe Mazzini 36",
+    "postalCode": "25121",
+    "addressLocality": "Brescia",
+    "addressRegion": "BS",
+    "addressCountry": "IT"
+  },
+  "sameAs": ["https://www.instagram.com/ilramen_di_sergio/"],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "12:00",
+      "closes": "15:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday"],
+      "opens": "18:30",
+      "closes": "22:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Friday", "Saturday", "Sunday"],
+      "opens": "18:30",
+      "closes": "23:00"
+    }
+  ]
+}
+</script>
+
+<style>
+/* ==========================================================
+   DESIGN TOKENS — legno scuro, crema e arancio neon (come l'insegna)
+   ========================================================== */
+:root{
+  --accent:#f4a75b;            /* arancio neon morbido: superfici, bottoni, hover */
+  --accent-mid:#d8641c;        /* arancio pieno per le parole grandi */
+  --accent-ink:#9a4513;        /* arancio bruciato per testo piccolo */
+  --accent-soft:rgba(244,167,91,.26);
+  --bg:#fbf7f1;                /* crema */
+  --bg2:#f1e3d0;               /* beige caldo */
+  --dark:#1a120c;              /* legno scuro */
+  --ink:#1a120c;
+  --muted:#66574a;
+  --line:rgba(26,18,12,.12);
+  --line-dark:rgba(251,247,241,.16);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --maxw:1280px;
+  --display:'Shojumaru','Satoshi',system-ui,sans-serif;   /* lettering "giapponese" con tagli, come l'insegna */
+  --label:'Satoshi','Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg);-webkit-text-size-adjust:100%}
+body{
+  font-family:'Satoshi','Inter',system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body.lightbox-open{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;color:inherit}
+ul{list-style:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section[id]{scroll-margin-top:72px}
+:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px;border-radius:3px}
+
+.skip-link{
+  position:fixed;top:12px;left:12px;z-index:300;padding:12px 18px;background:var(--dark);color:#fff;
+  font-weight:700;transform:translateY(-160%);transition:transform .2s ease;
+}
+.skip-link:focus{transform:none}
+
+.eyebrow{
+  display:inline-block;font-family:var(--label);
+  font-size:.68rem;font-weight:700;letter-spacing:.36em;text-transform:uppercase;
+  color:var(--accent-ink);
+}
+.eyebrow.on-dark{color:var(--accent)}
+.lede{font-size:clamp(1.05rem,1.6vw,1.35rem);color:var(--muted);line-height:1.65}
+
+.hero-title{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(2.6rem,7.6vw,6.2rem);line-height:1.08;letter-spacing:0;
+}
+.hero-title .soft{
+  display:block;font-weight:400;text-transform:lowercase;
+  color:var(--accent-mid);letter-spacing:0;margin:.02em 0 .04em;
+}
+.big-title{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(2.1rem,5.6vw,4.6rem);line-height:1.1;letter-spacing:0;
+}
+.big-title.md{font-size:clamp(1.9rem,4.1vw,3.5rem)}
+.soft-i{font-weight:400;text-transform:lowercase;color:var(--accent-mid)}
+.on-dark .soft-i,.dark .soft-i{color:var(--accent)}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+  font-family:var(--label);font-size:.72rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;line-height:1;
+  padding:19px 34px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease);
+}
+.btn:hover{transform:translateY(-2px)}
+.btn .arw{transition:transform .4s var(--ease)}
+.btn:hover .arw{transform:translate(3px,-3px)}
+.btn-accent{background:var(--accent);color:var(--dark)}
+.btn-accent:hover{background:var(--dark);color:#fff}
+.btn-dark{background:var(--dark);color:#fff}
+.btn-dark:hover{background:var(--accent);color:var(--dark)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:rgba(18,18,18,.35)}
+.btn-ghost:hover{background:var(--ink);color:var(--bg)}
+.btn-block{width:100%}
+.link-underline{
+  display:inline-flex;align-items:center;gap:.5em;font-weight:700;font-size:1.05rem;
+  border-bottom:2px solid var(--accent);padding-bottom:4px;transition:color .3s var(--ease),border-color .3s var(--ease)
+}
+.link-underline:hover{color:var(--accent-ink);border-color:var(--accent-ink)}
+
+/* ---------- Logo ---------- */
+/* l'insegna contiene già il nome: solo la tessera del logo, al centro della barra */
+.logo{display:inline-flex;align-items:center;color:inherit;line-height:1}
+.logo .lg-mark{display:block;height:76px;width:76px;border-radius:18px;object-fit:cover;transition:height .3s var(--ease),width .3s var(--ease),border-radius .3s var(--ease);box-shadow:0 10px 24px -10px rgba(26,18,12,.7)}
+.nav.shrink .logo .lg-mark{height:56px;width:56px;border-radius:14px}
+footer .logo .lg-mark{height:120px;width:120px;border-radius:22px}
+
+/* ---------- Nav ---------- */
+/* trasparente sopra la foto della hero, diventa bianca appena si scorre la pagina */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:90;color:#fff;
+  background:transparent;border-bottom:1px solid transparent;
+  transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease);
+}
+.nav.shrink,.nav.menu-open{
+  background:rgba(255,255,255,.96);color:var(--ink);border-bottom-color:var(--line);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 10px 30px -24px rgba(26,18,12,.5);
+}
+.nav-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;height:104px;transition:height .3s var(--ease)}
+.nav.shrink .nav-inner{height:76px}
+.nav-inner{column-gap:64px}
+.nav-left{justify-self:end}
+.nav-right{justify-self:start;display:flex;align-items:center}
+.nav-links{display:flex;align-items:center;gap:46px}
+.nav-links a{
+  font-family:var(--label);font-size:.68rem;font-weight:700;
+  letter-spacing:.36em;text-transform:uppercase;transition:color .3s var(--ease);
+}
+.nav:not(.shrink):not(.menu-open) .nav-links a{text-shadow:0 1px 10px rgba(0,0,0,.45)}
+.nav-links a:hover{color:var(--accent)}
+.nav.shrink .nav-links a:hover{color:var(--accent-ink)}
+.nav-cta{
+  background:var(--accent);color:var(--dark)!important;
+  font-family:var(--label);font-size:.68rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;padding:14px 28px;border-radius:999px;
+  transition:background .35s var(--ease),color .35s var(--ease);
+}
+.nav-cta:hover{background:var(--dark);color:#fff!important}
+.hero-copy .rating{display:inline-flex;align-items:center;gap:8px;margin-top:22px;color:#fff;font-family:var(--label);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.hero-copy .rating .stars{color:var(--accent);letter-spacing:.1em}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;color:inherit}
+.nav-toggle svg{width:26px;height:26px}
+.mobile-menu{display:none;background:var(--bg);border-bottom:1px solid var(--line)}
+.mobile-menu.open{display:block}
+.mobile-menu .wrap{display:flex;flex-direction:column;padding-top:8px;padding-bottom:18px}
+.mobile-menu a{
+  color:var(--ink);padding:15px 2px;border-bottom:1px solid var(--line);
+  font-family:var(--label);font-size:.72rem;font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;
+}
+.mobile-menu a.nav-cta{border:0;margin-top:14px;text-align:center}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;isolation:isolate;overflow:hidden}
+/* la sezione hero è ora una foto a piena larghezza con il titolo centrato sopra, senza i cerchi con i piatti */
+.hero-bg{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,12,8,.5),rgba(18,12,8,.34) 40%,rgba(18,12,8,.6))}
+.hero-grid{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:min(820px,88vh);padding:150px 0 70px}
+.hero-copy{max-width:760px}
+.hero-copy .eyebrow{color:#fff;margin-bottom:26px}
+.hero-title{color:#fff}
+.hero-copy .lede{color:rgba(255,255,255,.88);margin:30px auto 0;max-width:46ch}
+.hero-actions{margin-top:42px;display:flex;align-items:center;justify-content:center;gap:26px;flex-wrap:wrap}
+.hero-actions .link-underline{color:#fff;border-color:#fff}
+.hero-actions .link-underline:hover{color:var(--accent);border-color:var(--accent)}
+/* ---------- Facts strip ---------- */
+/* fascia a piena larghezza subito sotto la hero (fuori dalla sezione, così la foto copre solo la hero) */
+.facts-bar{background:var(--bg);border-bottom:1px solid var(--line)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:30px 34px;border-right:1px solid var(--line)}
+.fact:last-child{border-right:0}
+.fact .k{font-family:var(--label);font-size:.62rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--accent-ink)}
+.fact .v{font-family:var(--label);font-weight:600;font-size:1.05rem;line-height:1.3;margin-top:10px;text-transform:uppercase;letter-spacing:-.01em}
+
+/* ---------- Sezioni ---------- */
+.section{padding:clamp(80px,11vw,150px) 0}
+.alt{background:var(--bg2)}
+.sec-head{display:flex;flex-direction:row;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:80px}
+.sec-head .side{max-width:36ch}
+.sec-head .note{color:var(--muted);font-size:1rem;line-height:1.7}
+.sec-head .side .btn{margin-top:26px}
+.sec-head-center{text-align:center;margin-bottom:80px}
+.sec-head-center .big-title{margin-top:18px}
+.sec-head-center .note{max-width:44ch;margin:24px auto 0;color:var(--muted);font-size:1rem;line-height:1.7}
+
+/* ---------- Storia ---------- */
+.split{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:clamp(48px,8vw,120px)}
+/* riquadro foto condiviso da Storia ed Esperienza: proporzioni fisse, niente foto allungate */
+.img-frame{
+  position:relative;overflow:hidden;border-radius:32px;aspect-ratio:4/5;
+  box-shadow:0 46px 90px -40px rgba(18,18,18,.5);background:var(--bg2);
+}
+.img-frame img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.img-frame:hover img{transform:scale(1.04)}
+.story-copy .big-title{margin-top:18px}
+.story-copy p{max-width:50ch;margin-top:26px;color:var(--muted);font-size:1.06rem}
+.points{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:44px}
+.point{padding-top:18px;border-top:1px solid var(--line)}
+.point strong{display:block;font-family:var(--label);font-weight:600;text-transform:uppercase;font-size:1.05rem;letter-spacing:-.01em}
+.point span{display:block;margin-top:8px;color:var(--muted);font-size:.92rem}
+
+/* ---------- Menu ---------- */
+.dishes{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.dish{
+  display:flex;flex-direction:column;min-height:300px;padding:clamp(30px,3.6vw,52px);
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  transition:background .6s var(--ease);
+}
+.dish:hover{background:var(--accent)}
+.dish-top{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.dish-num{font-family:var(--label);font-size:.66rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--accent-ink);transition:color .6s var(--ease)}
+.dish-price{font-family:var(--label);font-weight:700;font-size:1.05rem;margin-top:auto;padding-top:22px;letter-spacing:.04em}
+.dish-thumb{width:84px;height:84px;border-radius:50%;overflow:hidden;flex:none;border:3px solid var(--bg2);box-shadow:0 10px 24px -10px rgba(18,18,18,.4)}
+.dish-thumb img{width:100%;height:100%;object-fit:cover}
+.dish h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(1.3rem,1.9vw,1.6rem);letter-spacing:0;margin:40px 0 14px;line-height:1.2}
+.dish p{color:var(--muted);transition:color .6s var(--ease)}
+.dish:hover p{color:rgba(18,18,18,.78)}
+.dish:hover .dish-num{color:var(--dark)}
+
+/* ---------- Esperienza (dark) ---------- */
+.dark{background:var(--dark);color:var(--bg);overflow:hidden}
+.dark .split{grid-template-columns:1.1fr .9fr}
+.dark .big-title{margin-top:18px}
+.dark .lead-p{max-width:46ch;margin-top:26px;color:rgba(251,247,241,.7);font-size:1.06rem}
+.values{margin-top:46px}
+.value{display:grid;grid-template-columns:64px 1fr;gap:12px;border-top:1px solid var(--line-dark);padding:26px 0}
+.value .num{font-family:var(--display);font-size:1.9rem;color:var(--accent);line-height:1}
+.value h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:1.3rem;letter-spacing:0;margin-bottom:8px}
+.value p{color:rgba(251,247,241,.66)}
+.dark .img-frame{box-shadow:0 46px 90px -40px rgba(0,0,0,.8)}
+
+/* ---------- Galleria ---------- */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.2vw,26px)}
+.work{
+  position:relative;overflow:hidden;padding:0;border:0;border-radius:20px;aspect-ratio:1/1;
+  cursor:zoom-in;background:var(--bg2);
+}
+.work img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.work:hover img{transform:scale(1.05)}
+.work .veil{
+  position:absolute;inset:0;background:rgba(18,18,18,.4);opacity:0;
+  display:grid;place-items:center;transition:opacity .4s var(--ease);
+}
+.work:hover .veil,.work:focus-visible .veil{opacity:1}
+.work .veil span{
+  width:100px;height:100px;border-radius:50%;background:var(--accent);color:var(--dark);
+  display:grid;place-items:center;text-align:center;padding:0 12px;
+  font-family:var(--label);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;line-height:1.5;
+}
+
+/* ---------- Contatti ---------- */
+/* una sola colonna, centrata: non c'è più l'immagine/colonna della mappa a fianco */
+/* desktop: orari a sinistra, indirizzo/telefono/bottoni a destra, per riempire la larghezza */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,70px);align-items:start}
+.hours{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:34px;background:rgba(255,255,255,.5)}
+.hours .row{display:flex;justify-content:space-between;gap:16px;padding:15px 22px;border-bottom:1px solid var(--line);font-size:.94rem}
+.hours .row:last-child{border-bottom:0}
+.hours .row .d{font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.08em;font-size:.85rem}
+.hours .row .h{color:var(--muted);text-align:right}
+.hours .row.today{background:var(--accent-soft)}
+.hours .row.today .h{color:var(--accent-ink);font-weight:700}
+.crow{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
+.crow svg{width:22px;height:22px;color:var(--accent-ink);flex:none;margin-top:4px}
+.crow .k{font-family:var(--label);font-size:.6rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--accent-ink)}
+.crow .v{display:block;font-family:var(--label);font-weight:500;font-size:1.08rem;margin-top:6px}
+.contact-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.brand-card{display:block;overflow:hidden;border-radius:20px;background:var(--bg);box-shadow:0 40px 80px -46px rgba(18,18,18,.5)}
+.brand-card img{width:100%;height:auto}
+.map-open{margin-top:14px}
+
+/* ---------- CTA finale ---------- */
+.finalcta{position:relative;overflow:hidden;text-align:center;padding:clamp(110px,15vw,190px) 0}
+.finalcta .inner{position:relative;z-index:2;max-width:1000px;margin:0 auto}
+.finalcta p{margin:34px auto 50px;max-width:46ch;color:var(--muted);font-size:clamp(1.05rem,1.5vw,1.3rem)}
+.finalcta .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.bg-word{
+  position:absolute;top:50%;left:0;transform:translateY(-50%);
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:22vw;line-height:1;white-space:nowrap;opacity:.035;user-select:none;pointer-events:none;
+}
+
+/* ---------- Footer ---------- */
+footer{background:var(--dark);color:var(--bg);padding:clamp(70px,9vw,110px) 0 36px}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1.25fr .7fr;gap:clamp(32px,4vw,64px);align-items:start;padding-bottom:clamp(50px,6vw,80px)}
+.f-brand{display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.f-claim{color:rgba(251,247,241,.68);max-width:34ch;line-height:1.75;font-size:.95rem}
+footer h5{
+  font-family:var(--label);font-size:.66rem;font-weight:700;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:22px;padding-bottom:12px;border-bottom:1px solid var(--line-dark);
+}
+.f-col{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.f-col a,.f-col p,.f-col li{
+  font-family:var(--label);font-weight:500;font-size:.88rem;letter-spacing:.04em;line-height:1.6;
+  color:rgba(251,247,241,.86);transition:color .3s var(--ease);
+}
+.f-col a:hover{color:var(--accent)}
+.f-col .f-time{display:flex;justify-content:space-between;gap:22px;width:100%;white-space:nowrap}
+.f-col .f-time span:last-child{color:rgba(251,247,241,.6)}
+.f-col ul{display:flex;flex-direction:column;gap:12px;width:100%}
+.social-row{display:flex;gap:12px}
+.f-col .social-btn{
+  display:grid;place-items:center;width:44px;height:44px;flex:none;border-radius:50%;
+  border:1px solid var(--line-dark);color:var(--bg);
+  transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease);
+}
+.social-btn svg{width:20px;height:20px}
+.f-col .social-btn:hover{background:var(--accent);color:var(--dark);border-color:var(--accent)}
+.f-bottom{
+  border-top:1px solid var(--line-dark);padding-top:26px;display:flex;justify-content:space-between;align-items:center;
+  gap:16px;flex-wrap:wrap;font-family:var(--label);font-size:.62rem;font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;color:rgba(251,247,241,.5);
+}
+
+/* ---------- Lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:28px;background:rgba(8,8,8,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lb[hidden]{display:none}
+.lb-figure{margin:0;text-align:center}
+.lb-img{max-width:min(90vw,880px);max-height:78vh;object-fit:contain;border-radius:14px;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+.lb-caption{margin-top:16px;color:rgba(255,255,255,.78);font-family:var(--label);font-size:.7rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase}
+.lb-btn{position:absolute;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;width:52px;height:52px;border-radius:50%;cursor:pointer;display:grid;place-items:center;transition:background .25s,color .25s}
+.lb-btn:hover{background:var(--accent);color:var(--dark);border-color:var(--accent)}
+.lb-btn svg{width:24px;height:24px}
+.lb-prev{left:18px;top:50%;transform:translateY(-50%)}
+.lb-next{right:18px;top:50%;transform:translateY(-50%)}
+.lb-close{top:18px;right:18px;width:46px;height:46px}
+.lb-count{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.85);font-family:var(--label);font-size:.65rem;letter-spacing:.3em}
+
+/* ---------- Mobile call bar ---------- */
+.callbar{display:none}
+
+/* ---------- Reveal ---------- */
+.js .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.js .reveal.in{opacity:1;transform:translateY(0)}
+.js .reveal.d1{transition-delay:.1s}
+.js .reveal.d2{transition-delay:.2s}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1080px){
+  .nav-links{gap:30px}
+  .hero-grid{gap:36px}
+  .dishes{grid-template-columns:repeat(2,1fr)}
+}
+/* tablet (768–899px): tiene la barra completa (link + Prenota) invece dell'hamburger, un po' più stretta */
+@media (max-width:899px) and (min-width:768px){
+  .nav-inner{column-gap:32px}
+  .nav-links{gap:20px}
+  .nav-links a{font-size:.62rem;letter-spacing:.22em}
+  .nav-cta{padding:12px 22px;font-size:.62rem;letter-spacing:.14em}
+}
+@media (max-width:767px){
+  .nav-links{display:none}
+  .nav-toggle{display:block;justify-self:end;grid-column:3}
+  .logo .lg-mark{height:60px;width:60px;border-radius:15px}
+  .nav.shrink .logo .lg-mark{height:48px;width:48px;border-radius:12px}
+  .nav-inner{height:84px}
+  .nav.shrink .nav-inner{height:68px}
+  /* telefono: barra ridotta a logo centrato + menu, senza CTA (c'è la call bar) */
+  .nav-inner>.logo{grid-column:2;grid-row:1}
+  .nav-right{display:none}
+}
+@media (max-width:900px){
+  /* mobile/tablet: hero a schermo intero con la foto verticale dedicata e velo un po' più scuro per leggere il testo */
+  .hero-grid{min-height:100svh;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:110px 24px 48px}
+  .hero-bg img{object-position:50% 50%}
+  .hero-bg::after{background:linear-gradient(180deg,rgba(18,12,8,.5),rgba(18,12,8,.58) 45%,rgba(18,12,8,.78))}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .fact:nth-child(2){border-right:0}
+  .fact:nth-child(1),.fact:nth-child(2){border-bottom:1px solid var(--line)}
+  /* tablet + mobile: titoletti, titoli e testi centrati (come "Galleria") */
+  .sec-head{flex-direction:column;align-items:center;text-align:center;gap:24px;margin-bottom:54px}
+  .sec-head .side{max-width:44ch;margin-inline:auto}
+  .story-copy,.dark .split>div:first-child{text-align:center}
+  .story-copy p,.dark .lead-p{margin-inline:auto}
+  .points{text-align:center}
+  .fact{text-align:center}
+  .dish{align-items:center;text-align:center}
+  .dish-top{flex-direction:column-reverse;justify-content:center;gap:16px}
+  .value{grid-template-columns:1fr;justify-items:center;text-align:center;gap:10px}
+  /* tablet + mobile: colonna singola e centrata (le due colonne sono solo per il desktop) */
+  .contact-grid{display:block;max-width:600px;margin-inline:auto}
+  .contact-cta{justify-content:center}
+  .crow{flex-direction:column;align-items:center;gap:8px;text-align:center}
+  .crow svg{margin-top:0}
+  .split,.dark .split{grid-template-columns:1fr}
+  .split .img-frame{max-width:560px;margin:0 auto}
+}
+@media (max-width:620px){
+  .wrap{padding:0 20px}
+  /* telefono: niente più colonna lunga — le 4 informazioni restano in riga, solo più piccole */
+  .facts{grid-template-columns:repeat(4,1fr)}
+  .fact{padding:16px 4px;border-bottom:0}
+  .fact:nth-child(2){border-right:1px solid var(--line)}
+  .fact .k{font-size:.48rem;letter-spacing:.08em;overflow-wrap:break-word}
+  .fact .v{font-size:.66rem;line-height:1.25;margin-top:6px;overflow-wrap:break-word}
+  .points{grid-template-columns:1fr}
+  .dishes{grid-template-columns:1fr}
+  .dish{min-height:250px}
+  .works{grid-template-columns:repeat(2,1fr);gap:10px}
+  .work{border-radius:14px}
+  .work .veil span{width:78px;height:78px;font-size:.5rem}
+  .f-grid{grid-template-columns:1fr;justify-items:center;text-align:center;gap:40px;padding-bottom:48px}
+  .f-brand,.f-col{align-items:center}
+  .f-col h5{width:100%}
+  .f-claim{margin-inline:auto}
+  .f-col .f-time{margin-inline:auto}
+  .f-bottom{flex-direction:column;align-items:center;text-align:center;gap:12px}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:22px}
+  .hero-actions .btn{order:-1}
+  .hero-actions .link-underline{align-self:flex-start}
+  .hero .hero-actions .link-underline{align-self:center}
+  .contact-cta{flex-direction:column}
+  .contact-cta .btn{flex:none;width:100%}
+  .btn{padding:17px 26px}
+  .lb{padding:74px 14px}
+  .lb-prev{left:10px}
+  .lb-next{right:10px}
+  .callbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:80;gap:8px}
+  .callbar .cb{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px;border-radius:14px;font-family:var(--label);font-weight:700;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;box-shadow:0 12px 30px -8px rgba(0,0,0,.4)}
+  .callbar .cb svg{width:17px;height:17px}
+  .cb.solid{background:var(--dark);color:#fff}
+  .cb.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line)}
+  body{padding-bottom:78px}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition-duration:.01ms!important;transition-delay:0ms!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Vai al contenuto</a>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <nav class="nav-links nav-left" aria-label="Navigazione principale">
+      <a href="#storia">Sergio</a>
+      <a href="#menu">Menu</a>
+    </nav>
+    <a class="logo" href="#top" aria-label="Il Ramen di Sergio, torna all'inizio">
+      <img class="lg-mark" src="assets/images/logo-sergio.jpg" alt="Insegna Ramen di Sergio" width="76" height="76" loading="eager">
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Navigazione secondaria">
+        <a href="#galleria">Galleria</a>
+        <a href="#contatti">Dove siamo</a>
+      </nav>
+    </div>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Apri il menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="wrap">
+      <a href="#storia">Sergio</a>
+      <a href="#menu">Menu</a>
+      <a href="#galleria">Galleria</a>
+      <a href="#contatti">Dove siamo</a>
+      <a href="tel:+390309173342" class="nav-cta">Chiama e prenota</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Il Ramen di Sergio">
+  <div class="hero-bg" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 900px)" srcset="assets/images/hero-bg-mobile.jpg">
+      <img src="assets/images/hero-bg.jpg" alt="" width="1290" height="650" loading="eager">
+    </picture>
+  </div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Via Mazzini 36 · Brescia Centro</span>
+        <h1 class="hero-title">
+          Il ramen
+          <span class="soft">di</span>
+          Sergio
+        </h1>
+        <p class="lede">Autentico ramen giapponese nel cuore di Brescia: brodo cotto per oltre dieci ore, noodles e topping generosi. Il gusto lo scegli tu.</p>
+        <span class="rating"><span class="stars" aria-hidden="true">★★★★★</span> 4,7 su Google · 261 recensioni</span>
+        <div class="hero-actions">
+          <a href="#menu" class="link-underline">Scopri i piatti <span class="arw">→</span></a>
+          <a href="tel:+390309173342" class="btn btn-accent">Chiama e prenota <span class="arw" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+  <div class="facts-bar reveal d2" aria-label="Informazioni rapide">
+    <div class="wrap facts">
+      <div class="fact"><div class="k">Cucina</div><div class="v">Ramen<br>giapponese</div></div>
+      <div class="fact"><div class="k">Dove</div><div class="v">Via Mazzini 36<br>Brescia Centro</div></div>
+      <div class="fact"><div class="k">Telefono</div><div class="v"><a href="tel:+390309173342">030 917 3342</a></div></div>
+      <div class="fact"><div class="k">Aperti</div><div class="v">Pranzo e cena<br>Lunedì chiuso</div></div>
+    </div>
+  </div>
+
+<!-- ============ STORIA ============ -->
+<section class="section" id="storia">
+  <div class="wrap split">
+    <div class="reveal">
+      <div class="img-frame">
+        <img src="assets/images/storia-chashu.jpg" alt="Bacchette che sollevano noodles e una fetta di chashu da una ciotola di ramen fumante" width="1000" height="1250" loading="lazy">
+      </div>
+    </div>
+    <div class="story-copy reveal d1">
+      <span class="eyebrow">Da Sergio</span>
+      <h2 class="big-title md">Un angolo di <span class="soft-i">giappone</span> in centro</h2>
+      <p>In Via Mazzini, a due passi da Piazza della Loggia, Sergio e il suo team servono ramen come si mangia in Giappone: un brodo di maiale e pollo che cuoce lentamente per oltre dieci ore, noodles saporiti e ciotole piene fino all’orlo.</p>
+      <p>Si comincia con un tè caldo di benvenuto, si sceglie il brodo, si aggiunge qualcosa da condividere. Un locale piccolo e accogliente, perfetto per un pranzo veloce o una cena tra amici.</p>
+      <div class="points">
+        <div class="point"><strong>Brodo 10 ore+</strong><span>Maiale e pollo a lunga cottura, la base di ogni ciotola.</span></div>
+        <div class="point"><strong>Anche vegano</strong><span>Brodo vegetale e opzioni veggie per tutti.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section class="section alt" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow reveal">Dalla cucina</span>
+        <h2 class="big-title reveal" style="margin-top:18px">Le ciotole<br>di Sergio</h2>
+      </div>
+      <div class="side reveal d1">
+        <p class="note">Scegli il brodo — Shoyu, Miso, Tantan leggermente piccante o Veggie — e il tuo ramen. Il menu completo comprende anche donburi, gyoza, sfiziosità, dolci, birre giapponesi e sake.</p>
+        <a class="btn btn-dark" href="https://go.nordqr.com/ilramendisergio/" target="_blank" rel="noopener">Menu completo <span class="arw" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+
+    <div class="dishes">
+      <article class="dish reveal"><div class="dish-top"><span class="dish-num">01 · Classico</span><span class="dish-thumb"><img src="assets/images/ramen-chashu.jpg" alt="Chashu ramen visto dall'alto" width="168" height="168" loading="lazy"></span></div><h3>Chashu Ramen</h3><p>Fette di arrosto di maiale, alga nori, verdure, cipollotto, cipolla fritta, bambù, shoyu tamago e pak-choi.</p><span class="dish-price">13,80 €</span></article>
+      <article class="dish reveal d1"><div class="dish-top"><span class="dish-num">02 · Ramen</span><span class="dish-thumb"><img src="assets/images/ramen-chicken.jpg" alt="Chicken ramen con pollo fritto, uova e pak-choi" width="168" height="168" loading="lazy"></span></div><h3>Chicken Ramen</h3><p>Pollo fritto, alga nori, verdure, cipollotto, porro, cipolla fritta, bambù, shoyu tamago e pak-choi.</p><span class="dish-price">13,80 €</span></article>
+      <article class="dish reveal d2"><div class="dish-top"><span class="dish-num">03 · Ramen</span><span class="dish-thumb"><img src="assets/images/ramen-tempura.jpg" alt="Tempura ramen con gamberi in tempura e uova marinate" width="168" height="168" loading="lazy"></span></div><h3>Tempura Ramen</h3><p>Tempura di gamberi, alga nori, verdure, cipollotto, cipolla fritta, bambù, shoyu tamago, piselli di neve e pak-choi.</p><span class="dish-price">14,80 €</span></article>
+      <article class="dish reveal"><div class="dish-top"><span class="dish-num">04 · Veggie</span><span class="dish-thumb"><img src="assets/images/ramen-tofu.jpg" alt="Tofu ramen con loto, peperoni e uova marinate" width="168" height="168" loading="lazy"></span></div><h3>Tofu Ramen</h3><p>Tofu, peperoni, alga nori, verdure, cipollotto, porro, cipolla fritta, bambù, loto, shoyu tamago e pak-choi.</p><span class="dish-price">11,80 €</span></article>
+      <article class="dish reveal d1"><div class="dish-top"><span class="dish-num">05 · Senza brodo</span><span class="dish-thumb"><img src="assets/images/dry-ramen.jpg" alt="Dry ramen in ciotola nera" width="168" height="168" loading="lazy"></span></div><h3>Dry Ramen</h3><p>Il ramen asciutto, fresco e perfetto d’estate: pak-choi, cipollotto, germogli di soia, macinato di maiale e sesamo.</p><span class="dish-price">12,80 €</span></article>
+      <article class="dish reveal d2"><div class="dish-top"><span class="dish-num">06 · New entry</span><span class="dish-thumb"><img src="assets/images/unagi-don.jpg" alt="Unagi don con anguilla glassata e omelette su riso" width="168" height="168" loading="lazy"></span></div><h3>Unagi Don</h3><p>Riso bianco, anguilla alla griglia in salsa kabayaki e morbida omelette giapponese in stile omurice.</p><span class="dish-price">18,80 €</span></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESPERIENZA (dark) ============ -->
+<section class="section dark" id="esperienza">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow on-dark">L’esperienza</span>
+      <h2 class="big-title md">Brodo, noodles, <span class="soft-i">compagnia</span></h2>
+      <p class="lead-p">Tra murales ispirati al Giappone e il profumo del brodo che sobbolle, ogni visita è un piccolo viaggio a Tokyo senza lasciare Brescia.</p>
+      <div class="values">
+        <div class="value"><div class="num">01</div><div><h3>Scegli il brodo</h3><p>Shoyu delicato, Miso corposo, Tantan piccante o Veggie per vegani e vegetariani.</p></div></div>
+        <div class="value"><div class="num">02</div><div><h3>Da condividere</h3><p>Gyoza alla piastra, takoyaki, involtini, edamame e kimchi al centro del tavolo.</p></div></div>
+        <div class="value"><div class="num">03</div><div><h3>Il finale dolce</h3><p>Daifuku con frutta fresca, dorayaki e Okinawa al cocco e mango.</p></div></div>
+      </div>
+    </div>
+    <div class="reveal d1">
+      <div class="img-frame">
+        <img src="assets/images/locale-sala.jpg" alt="La sala del Ramen di Sergio in penombra, con tavoli in legno e grandi murales giapponesi alle pareti" width="1000" height="1250" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERIA ============ -->
+<section class="section" id="galleria">
+  <div class="wrap">
+    <div class="sec-head-center reveal">
+      <span class="eyebrow">A tavola</span>
+      <h2 class="big-title">Galleria</h2>
+    </div>
+
+    <div class="works" id="works">
+      <button class="work reveal" type="button" data-caption="Due ciotole di ramen"><img src="assets/images/ramen-due-ciotole.jpg" alt="Due ciotole di ramen viste dall'alto su un tavolo di legno scuro" width="1024" height="1024" loading="lazy"><span class="veil" aria-hidden="true"><span>Apri</span></span></button>
+      <button class="work reveal d1" type="button" data-caption="Takoyaki"><img src="assets/images/takoyaki.jpg" alt="Takoyaki glassati su un letto di insalata" width="1024" height="1024" loading="lazy"><span class="veil" aria-hidden="true"><span>Apri</span></span></button>
+      <button class="work reveal d2" type="button" data-caption="Ramen shoyu"><img src="assets/images/ramen-shoyu.jpg" alt="Ramen con uova marinate, pak-choi, cipollotto e cipolla fritta" width="1024" height="1024" loading="lazy"><span class="veil" aria-hidden="true"><span>Apri</span></span></button>
+      <button class="work reveal" type="button" data-caption="Gyoza di verdure alla piastra"><img src="assets/images/gyoza-verdure.jpg" alt="Gyoza verdi alla piastra su un piatto scuro" width="1024" height="1024" loading="lazy"><span class="veil" aria-hidden="true"><span>Apri</span></span></button>
+      <button class="work reveal d1" type="button" data-caption="Straccetti di maiale fritti"><img src="assets/images/straccetti-maiale.jpg" alt="Straccetti di maiale fritti con insalata e salse" width="1024" height="1024" loading="lazy"><span class="veil" aria-hidden="true"><span>Apri</span></span></button>
+      <button class="work reveal d2" type="button" data-caption="Gyoza mix"><img src="assets/images/gyoza-mix.jpg" alt="Gyoza misti alla piastra con birra sullo sfondo" width="1024" height="1024" loading="lazy"><span class="veil" aria-hidden="true"><span>Apri</span></span></button>
+      <button class="work reveal" type="button" data-caption="Tempura di gamberi"><img src="assets/images/tempura-gamberi.jpg" alt="Gamberi in tempura con salsa" width="1024" height="1024" loading="lazy"><span class="veil" aria-hidden="true"><span>Apri</span></span></button>
+      <button class="work reveal d1" type="button" data-caption="Involtini"><img src="assets/images/involtini.jpg" alt="Involtini croccanti su foglie di lattuga" width="1024" height="1024" loading="lazy"><span class="veil" aria-hidden="true"><span>Apri</span></span></button>
+      <button class="work reveal d2" type="button" data-caption="Edamame"><img src="assets/images/edamame.jpg" alt="Edamame su un piatto quadrato scuro" width="1024" height="1024" loading="lazy"><span class="veil" aria-hidden="true"><span>Apri</span></span></button>
+      <button class="work reveal" type="button" data-caption="Dorayaki"><img src="assets/images/dorayaki.jpg" alt="Dorayaki con crema montata" width="1024" height="1024" loading="lazy"><span class="veil" aria-hidden="true"><span>Apri</span></span></button>
+      <button class="work reveal d1" type="button" data-caption="Okinawa al mango"><img src="assets/images/okinawa-mango.jpg" alt="Dolce Okinawa con copertura al mango e zucchero a velo" width="1024" height="1024" loading="lazy"><span class="veil" aria-hidden="true"><span>Apri</span></span></button>
+      <button class="work reveal d2" type="button" data-caption="Sake di riso"><img src="assets/images/sake.jpg" alt="Bottiglia di sake con due bicchierini in ceramica" width="1024" height="1024" loading="lazy"><span class="veil" aria-hidden="true"><span>Apri</span></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATTI ============ -->
+<section class="section alt" id="contatti">
+  <div class="wrap">
+    <div class="sec-head-center reveal">
+      <span class="eyebrow">Vieni a trovarci</span>
+      <h2 class="big-title">Ci vediamo<br>da Sergio</h2>
+      <p class="note">Siamo in Via Mazzini 36, in pieno centro a Brescia. A pranzo e a cena dal martedì alla domenica, anche da asporto.</p>
+    </div>
+
+    <div class="contact-grid">
+      <ul class="hours reveal" id="hours" aria-label="Orari di apertura">
+        <li class="row" data-day="1"><span class="d">Lunedì</span><span class="h">Chiuso</span></li>
+        <li class="row" data-day="2"><span class="d">Martedì</span><span class="h">12–15 · 18:30–22:30</span></li>
+        <li class="row" data-day="3"><span class="d">Mercoledì</span><span class="h">12–15 · 18:30–22:30</span></li>
+        <li class="row" data-day="4"><span class="d">Giovedì</span><span class="h">12–15 · 18:30–22:30</span></li>
+        <li class="row" data-day="5"><span class="d">Venerdì</span><span class="h">12–15 · 18:30–23</span></li>
+        <li class="row" data-day="6"><span class="d">Sabato</span><span class="h">12–15 · 18:30–23</span></li>
+        <li class="row" data-day="0"><span class="d">Domenica</span><span class="h">12–15 · 18:30–23</span></li>
+      </ul>
+      <div class="contact-side reveal d1">
+        <div class="crow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <div><span class="k">Indirizzo</span><a class="v" href="https://www.google.com/maps/search/?api=1&query=Il%20Ramen%20di%20Sergio%20Via%20Mazzini%2036%20Brescia" target="_blank" rel="noopener">Via Mazzini 36, 25121 Brescia (BS)</a></div>
+        </div>
+        <div class="crow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 0 0 6 6L15 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2Z" stroke-linejoin="round"/></svg>
+          <div><span class="k">Telefono</span><a class="v" href="tel:+390309173342">030 917 3342</a></div>
+        </div>
+        <div class="contact-cta">
+          <a href="tel:+390309173342" class="btn btn-accent">Chiama e prenota <span class="arw" aria-hidden="true">↗</span></a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Il%20Ramen%20di%20Sergio%20Via%20Mazzini%2036%20Brescia" target="_blank" rel="noopener" class="btn btn-dark">Apri in Google Maps <span class="arw" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINALE ============ -->
+<section class="finalcta">
+  <div class="wrap">
+    <div class="inner reveal">
+      <h2 class="big-title">La tua ciotola ti sta <span class="soft-i">aspettando</span></h2>
+      <p>Prenota un tavolo con una telefonata oppure passa a ritirare il tuo ramen da asporto: il brodo arriva caldo, a parte.</p>
+      <div class="cta-row">
+        <a href="tel:+390309173342" class="btn btn-dark">Chiama 030 917 3342 <span class="arw" aria-hidden="true">↗</span></a>
+        <a href="https://go.nordqr.com/ilramendisergio/" target="_blank" rel="noopener" class="btn btn-ghost">Sfoglia il menu</a>
+      </div>
+    </div>
+  </div>
+  <div class="bg-word" aria-hidden="true">RAMEN RAMEN</div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap f-grid">
+    <div class="f-brand">
+      <a class="logo" href="#top" aria-label="Il Ramen di Sergio, torna all'inizio">
+        <img class="lg-mark" src="assets/images/logo-sergio-full.jpg" alt="Insegna al neon Ramen di Sergio" width="120" height="120" loading="lazy">
+      </a>
+      <p class="f-claim">Autentico ramen giapponese nel centro di Brescia. Brodo a lunga cottura, gyoza, donburi e dolci giapponesi.</p>
+    </div>
+    <div class="f-col">
+      <h5>Contatti</h5>
+      <a href="tel:+390309173342">030 917 3342</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Il%20Ramen%20di%20Sergio%20Via%20Mazzini%2036%20Brescia" target="_blank" rel="noopener">Via Mazzini 36<br>25121 Brescia</a>
+    </div>
+    <div class="f-col">
+      <h5>Orari</h5>
+      <ul>
+        <li class="f-time"><span>Lun</span><span>Chiuso</span></li>
+        <li class="f-time"><span>Mar–Gio</span><span>12–15 · 18:30–22:30</span></li>
+        <li class="f-time"><span>Ven–Dom</span><span>12–15 · 18:30–23</span></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Seguici</h5>
+      <div class="social-row">
+        <a class="social-btn" href="https://www.instagram.com/ilramen_di_sergio/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="social-btn" href="https://www.google.com/maps/search/?api=1&query=Il%20Ramen%20di%20Sergio%20Via%20Mazzini%2036%20Brescia" target="_blank" rel="noopener" aria-label="Google Maps">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap f-bottom">
+    <span>© <span id="year"></span> Il Ramen di Sergio</span>
+    <span>Autentico ramen giapponese · Brescia</span>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Galleria fotografica" hidden>
+  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Chiudi galleria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Foto precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <figure class="lb-figure"><img class="lb-img" id="lbImg" src="assets/images/ramen-due-ciotole.jpg" alt="Anteprima della galleria del Ramen di Sergio"><figcaption class="lb-caption" id="lbCaption"></figcaption></figure>
+  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Foto successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+  <div class="lb-count" id="lbCount" aria-live="polite"></div>
+</div>
+
+<!-- ============ MOBILE CALL BAR ============ -->
+<div class="callbar">
+  <a class="cb solid" href="tel:+390309173342"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 0 0 6 6L15 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2Z" stroke-linejoin="round"/></svg>Chiama</a>
+  <a class="cb ghost" href="https://go.nordqr.com/ilramendisergio/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4Z" stroke-linejoin="round"/><path d="M9 9h6M9 13h6" stroke-linecap="round"/></svg>Menu</a>
+</div>
+
+<script>
+/* ---- Nav: shrink allo scroll + menu mobile ---- */
+const nav = document.getElementById("nav");
+const navToggle = document.getElementById("navToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove("open");
+  nav.classList.remove("menu-open");
+  navToggle.setAttribute("aria-expanded", "false");
+  navToggle.setAttribute("aria-label", "Apri il menu");
+}
+
+navToggle.addEventListener("click", () => {
+  const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+  mobileMenu.classList.toggle("open", !isOpen);
+  nav.classList.toggle("menu-open", !isOpen);
+  navToggle.setAttribute("aria-expanded", String(!isOpen));
+  navToggle.setAttribute("aria-label", isOpen ? "Apri il menu" : "Chiudi il menu");
+});
+mobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMobileMenu));
+/* barra trasparente sulla hero, bianca appena si scorre */
+const updateNav = () => nav.classList.toggle("shrink", window.scrollY > 30);
+window.addEventListener("scroll", updateNav, { passive: true });
+updateNav();
+
+/* ---- Evidenzia la riga di oggi negli orari ---- */
+const todayRow = document.querySelector(`.hours .row[data-day="${new Date().getDay()}"]`);
+if (todayRow) {
+  todayRow.classList.add("today");
+  todayRow.setAttribute("aria-current", "date");
+}
+
+/* ---- Anno ---- */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* ---- Scroll reveal ---- */
+const revealElements = document.querySelectorAll(".reveal");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if ("IntersectionObserver" in window && !prefersReducedMotion) {
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in");
+        currentObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealElements.forEach((element) => observer.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("in"));
+}
+
+/* ---- Lightbox galleria ---- */
+const workItems = [...document.querySelectorAll("#works .work")];
+const lightbox = document.getElementById("lightbox");
+const lbImg = document.getElementById("lbImg");
+const lbCaption = document.getElementById("lbCaption");
+const lbCount = document.getElementById("lbCount");
+const lbClose = document.getElementById("lbClose");
+const lbPrev = document.getElementById("lbPrev");
+const lbNext = document.getElementById("lbNext");
+let currentIndex = 0;
+let lastFocused = null;
+
+function updateLightbox() {
+  const item = workItems[currentIndex];
+  const sourceImage = item.querySelector("img");
+  lbImg.src = sourceImage.getAttribute("src");
+  lbImg.alt = sourceImage.alt;
+  lbCaption.textContent = item.dataset.caption;
+  lbCount.textContent = `${String(currentIndex + 1).padStart(2, "0")} / ${String(workItems.length).padStart(2, "0")}`;
+}
+
+function openLightbox(index) {
+  currentIndex = index;
+  lastFocused = document.activeElement;
+  updateLightbox();
+  lightbox.hidden = false;
+  document.body.classList.add("lightbox-open");
+  lbClose.focus();
+}
+
+function closeLightbox() {
+  lightbox.hidden = true;
+  document.body.classList.remove("lightbox-open");
+  if (lastFocused) lastFocused.focus();
+}
+
+function moveLightbox(step) {
+  currentIndex = (currentIndex + step + workItems.length) % workItems.length;
+  updateLightbox();
+}
+
+workItems.forEach((item, index) => item.addEventListener("click", () => openLightbox(index)));
+lbClose.addEventListener("click", closeLightbox);
+lbPrev.addEventListener("click", () => moveLightbox(-1));
+lbNext.addEventListener("click", () => moveLightbox(1));
+lightbox.addEventListener("click", (event) => { if (event.target === lightbox) closeLightbox(); });
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    if (!lightbox.hidden) closeLightbox();
+    else closeMobileMenu();
+  }
+  if (lightbox.hidden) return;
+  if (event.key === "ArrowLeft") moveLightbox(-1);
+  if (event.key === "ArrowRight") moveLightbox(1);
+  if (event.key === "Tab") {
+    const controls = [lbClose, lbPrev, lbNext];
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  }
+});
+</script>
+</body>
+</html>
